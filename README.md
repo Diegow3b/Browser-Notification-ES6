@@ -47,8 +47,9 @@ Pure Javascript ES6 for Browser Notification
 	    }
 
 	    pedirPermissao(){
-	        if (Notification.permission !== "granted")
-		    Notification.requestPermission();
+	        if (Notification.permission !== "granted"){
+	            Notification.requestPermission();
+                }
 	    }
 
 	    verificaPermissao(){
