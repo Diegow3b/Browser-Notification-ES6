@@ -2,6 +2,11 @@
 Pure Javascript ES6 for Browser Notification
 
 [Javascript] Utilizando o Chrome Notification ES6
+```js
+console.log();
+alert();
+function teste () {}
+```
 
 ## Criação / Creation
 	'use strict';
