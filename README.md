@@ -2,13 +2,9 @@
 Pure Javascript ES6 for Browser Notification
 
 [Javascript] Utilizando o Chrome Notification ES6
-```js
-console.log();
-alert();
-function teste () {}
-```
 
 ## Criação / Creation
+```js
 	'use strict';
 
 	class Notificacao {
@@ -93,23 +89,27 @@ function teste () {}
 	            }
 	        }
 	}
-
+```
 ## Utilização / Usage
+```js
 	var notificacao = new Notificacao({titulo:'App Name', 
 								   body:'Mensagem Default', 
 								   icon:'path_do_icone', 
 								   status:1,
 								   action:'url_redirecionamento_ao_clicar'});
 	notificacao.notificar();
+```
 
 // ou
-
+```js
 	var notificacao = new Notificacao();
 	notificacao.notificar('Nova mensagem');
 	notificacao.notificar('Nova mensagem', status=-1);
+```
 
 ## Observação / Obs
 ### Parametros / Parameters: 
+```js
 	{
 		titulo: string:"Titulo da Notificacao",
 		message: string:"Mensagem que ira aparecer no corpo da notificacao",
@@ -117,10 +117,8 @@ function teste () {}
 		status: number:"Status da notificação - 1 - Sucesso, 2 - Error"
 		action: string:"Url que será redirecionado caso click na notificacao"
 	}
+```
 
 ## Comentários / Comments
-`
-	Implementação realizada no projeto Lust, onde foi inserido no core e esta sendo
-	utilizado como um reforço de informação quando alguma operação é realizada pelo
-	profissional
+Any futher information contact me at my email: diegowebd@hotmail.com
 `
