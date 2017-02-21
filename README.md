@@ -25,6 +25,7 @@ Pure Javascript ES6 for Browser Notification
 
 		this.definirStatus(settings.status);
 		this.pedirPermissao();
+		
 	    }
 
 	    getAttr(){
@@ -62,7 +63,7 @@ Pure Javascript ES6 for Browser Notification
 		}else{
 		    return true;
 		}
-	    }Google Notificati
+	    }
 
 	    callAction(notification){
 		if (this.settings.action){
@@ -72,11 +73,12 @@ Pure Javascript ES6 for Browser Notification
 		}
 	    }
 
-	    notificar(){
+	    notificar(body=null, status=0){
 		if (this.verificaPermissao()) {
+		    if (status) definirStatus(status);		    
 		    let notification = new Notification(this.settings.titulo, {
 			icon: this.settings.icon,
-			body: this.settings.body,
+			body: if body ? body : this.settings.body,
 		    });
 
 		    this.callAction(notification);
@@ -96,17 +98,17 @@ notificacao.notificar();
 
 // ou
 var notificacao = new Notificacao();
-notificacao.notificar('Nova mensagem') // *A implementar essa mensagem
+notificacao.notificar('Nova mensagem')
 notificacao.notificar('Nova mensagem', status=-1) // *A implementar essa mensagem
 
 ## Observação / Obs
 ### Parametros / Parameters: 
 	{
-			titulo: string:"Titulo da Notificacao",
-			message: string:"Mensagem que ira aparecer no corpo da notificacao",
-			icon: string:"Path do icone que será mostrado na notificacao",
-			status: number:"Status da notificação - 1 - Sucesso, 2 - Error"
-			action: string:"Url que será redirecionado caso click na notificacao"
+		titulo: string:"Titulo da Notificacao",
+		message: string:"Mensagem que ira aparecer no corpo da notificacao",
+		icon: string:"Path do icone que será mostrado na notificacao",
+		status: number:"Status da notificação - 1 - Sucesso, 2 - Error"
+		action: string:"Url que será redirecionado caso click na notificacao"
 	}
 
 ## Comentários / Comments
