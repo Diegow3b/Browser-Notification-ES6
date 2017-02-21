@@ -100,8 +100,8 @@ Pure Javascript ES6 for Browser Notification
 // ou
 
 	var notificacao = new Notificacao();
-	notificacao.notificar('Nova mensagem')
-	notificacao.notificar('Nova mensagem', status=-1) // *A implementar essa mensagem
+	notificacao.notificar('Nova mensagem');
+	notificacao.notificar('Nova mensagem', status=-1);
 
 ## Observação / Obs
 ### Parametros / Parameters: 
