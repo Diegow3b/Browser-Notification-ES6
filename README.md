@@ -10,21 +10,21 @@ Pure Javascript ES6 for Browser Notification
 
 	    constructor(options = {}) {
 
-		let defaults = {
-		    titulo:     "Titulo Padrão",
-		    body:       "Mensagem Padrão",
-		    icon:       "/static/admin/plugins/notificacao/images/ICON_CHECK.png",
-		    status:     1,
-		    action:     ""
-		}
+	        let defaults = {
+	            titulo:     "Titulo Padrão",
+	            body:       "Mensagem Padrão",
+	            icon:       "/static/admin/plugins/notificacao/images/ICON_CHECK.png",
+	            status:     1,
+	            action:     ""
+	        }
 
-		let settings = Object.assign({}, defaults, options);
+	        let settings = Object.assign({}, defaults, options);
 
-		this.settings = settings;
+	        this.settings = settings;
 
 
-		this.definirStatus(settings.status);
-		this.pedirPermissao();
+	        this.definirStatus(settings.status);
+	        this.pedirPermissao();
 		
 	    }
 
