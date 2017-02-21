@@ -100,7 +100,7 @@ Pure Javascript ES6 for Browser Notification
 	notificacao.notificar();
 ```
 
-// ou
+ou
 ```js
 	var notificacao = new Notificacao();
 	notificacao.notificar('Nova mensagem');
