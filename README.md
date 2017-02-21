@@ -44,11 +44,11 @@ Pure Javascript ES6 for Browser Notification
 			this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
 		    }
 		}
-	    }            definirStatus(status) {         
+	    }
 
 	    pedirPermissao(){
 		if (Notification.permission !== "granted")
-		    Notification.requestPermission();
+	    		Notification.requestPermission();
 	    }
 
 	    verificaPermissao(){
@@ -76,15 +76,15 @@ Pure Javascript ES6 for Browser Notification
 	    notificar(body=null, status=0){
 		if (this.verificaPermissao()) {
 		    if (status) definirStatus(status);		    
-		    let notification = new Notification(this.settings.titulo, {
-			icon: this.settings.icon,
-			body: if body ? body : this.settings.body,
-		    });
+		        let notification = new Notification(this.settings.titulo, {
+			    icon: this.settings.icon,
+			    body: if body ? body : this.settings.body,
+		        });
 
-		    this.callAction(notification);
-		}else{
-		    console.log('Permissões não foram ativadas')
-		}
+		        this.callAction(notification);
+		    }else{
+		        console.log('Permissões não foram ativadas')
+		    }
 	    }
 	}
 
