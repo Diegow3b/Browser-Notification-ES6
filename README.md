@@ -4,86 +4,191 @@ Pure Javascript ES6 for Browser Notification
 [Javascript] Utilizando o Chrome Notification ES6
 
 ## Criação / Creation
-'use strict';
-class Notificacao {
+	'use strict';
 
-    constructor(options = {}) {
+	class Notificacao {
 
-        let defaults = {
-            titulo:     "Titulo Padrão",
-            body:       "Mensagem Padrão",
-            icon:       "/static/admin/plugins/notificacao/images/ICON_CHECK.png",
-            status:     1,
-            action:     ""
-        }
+	    constructor(options = {}) {
 
-        let settings = Object.assign({}, defaults, options);
+		let defaults = {
+		    titulo:     "Titulo Padrão",
+		    body:       "Mensagem Padrão",
+		    icon:       "/static/admin/plugins/notificacao/images/ICON_CHECK.png",
+		    status:     1,
+		    action:     ""
+		}
 
-        this.settings = settings;
+		let settings = Object.assign({}, defaults, options);
+
+		this.settings = settings;
 
 
-        this.definirStatus(settings.status);
-        this.pedirPermissao();
-    }
+		this.definirStatus(settings.status);
+		this.pedirPermissao();
+	    }
 
-    getAttr(){
-        console.log(this.settings);
-    }
+	    getAttr(){
+		console.log(this.settings);
+	    }
 
-    definirStatus(status) {
-        if (this.settings.icon === ""){
-            switch (status){
-            case 1:
-                this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
-                break;
-            case 2:
-                this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_ERROR.png";
-            default:
-                this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
-            }
-        }
-    }
+	    definirStatus(status) {
+		if (this.settings.icon === ""){
+		    switch (status){
+		    case 1:
+			this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
+			break;
+		    case 2:
+			this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_ERROR.png";
+		    default:
+			this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
+		    }
+		}
+	    }            definirStatus(status) {
+35
+                if (this.settings.icon === ""){
+36
+                    switch (status){
+37
+                    case 1:
+38
+                        this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
+39
+                        break;
+40
+                    case 2:
+41
+                        this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_ERROR.png";
+42
+                    default:
+43
+                        this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
+44
+                    }
+45
+                }
+46
+            }
+47
+​
+48
+            pedirPermissao(){
+49
+                if (Notification.permission !== "granted")
+50
+                    Notification.requestPermission();
+51
+            }
+52
+​
+53
+            verificaPermissao(){
+54
+                if (!Notification){
+55
+                    alert('Não é possivel utilizar notificações no seu navegador. Tente Google Chrome.');
+56
+                    return false;
+57
+                }
+58
+​
+59
+                if (Notification.permission !== "granted"){
+60
+                    Notification.requestPermission();
+61
+                    return false;
+62
+                }else{
+63
+                    return true;
+64
+                }
+65
+            }Google Notificati
+66
+​
+67
+            callAction(notification){
+68
+                if (this.settings.action){
+69
+                    notification.onclick = function () {
+70
+                        window.open(this.settings.action);
+71
+                    }
+72
+                }
+73
+            }
+74
+​
+75
+            notificar(){
+76
+                if (this.verificaPermissao()) {
+77
+                    let notification = new Notification(this.settings.titulo, {
+78
+                        icon: this.settings.icon,
+79
+                        body: this.settings.body,
+80
+                    });
+81
+​
+82
+                    this.callAction(notification);
+83
+                }else{
+84
+                    console.log('Permissões não foram ativadas')
+85
+                }
+86
+            }
 
-    pedirPermissao(){
-        if (Notification.permission !== "granted")
-            Notification.requestPermission();
-    }
+	    pedirPermissao(){
+		if (Notification.permission !== "granted")
+		    Notification.requestPermission();
+	    }
 
-    verificaPermissao(){
-        if (!Notification){
-            alert('Não é possivel utilizar notificações no seu navegador. Tente Google Chrome.');
-            return false;
-        }
+	    verificaPermissao(){
+		if (!Notification){
+		    alert('Não é possivel utilizar notificações no seu navegador. Tente Google Chrome.');
+		    return false;
+		}
 
-        if (Notification.permission !== "granted"){
-            Notification.requestPermission();
-            return false;
-        }else{
-            return true;
-        }
-    }Google Notificati
+		if (Notification.permission !== "granted"){
+		    Notification.requestPermission();
+		    return false;
+		}else{
+		    return true;
+		}
+	    }Google Notificati
 
-    callAction(notification){
-        if (this.settings.action){
-            notification.onclick = function () {
-                window.open(this.settings.action);
-            }
-        }
-    }
+	    callAction(notification){
+		if (this.settings.action){
+		    notification.onclick = function () {
+			window.open(this.settings.action);
+		    }
+		}
+	    }
 
-    notificar(){
-        if (this.verificaPermissao()) {
-            let notification = new Notification(this.settings.titulo, {
-                icon: this.settings.icon,
-                body: this.settings.body,
-            });
+	    notificar(){
+		if (this.verificaPermissao()) {
+		    let notification = new Notification(this.settings.titulo, {
+			icon: this.settings.icon,
+			body: this.settings.body,
+		    });
 
-            this.callAction(notification);
-        }else{
-            console.log('Permissões não foram ativadas')
-        }
-    }
-}
+		    this.callAction(notification);
+		}else{
+		    console.log('Permissões não foram ativadas')
+		}
+	    }
+	}
 
 ## Utilização / Usage
 var notificacao = new Notificacao({titulo:'App Name', 
