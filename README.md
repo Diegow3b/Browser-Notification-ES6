@@ -29,63 +29,63 @@ Pure Javascript ES6 for Browser Notification
 	    }
 
 	    getAttr(){
-		console.log(this.settings);
+	        console.log(this.settings);
 	    }
 
 	    definirStatus(status) {
-		if (this.settings.icon === ""){
-		    switch (status){
-		    case 1:
-			this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
-			break;
-		    case 2:
-			this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_ERROR.png";
-		    default:
-			this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
-		    }
-		}
+	        if (this.settings.icon === ""){
+	            switch (status){
+	            case 1:
+		        this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
+		        break;
+	            case 2:
+		        this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_ERROR.png";
+	            default:
+		        this.settings.icon = "/static/admin/plugins/notificacao/images/ICON_CHECK.png";
+	            }
+	        }
 	    }
 
 	    pedirPermissao(){
-		if (Notification.permission !== "granted")
-	    		Notification.requestPermission();
+	        if (Notification.permission !== "granted")
+		    Notification.requestPermission();
 	    }
 
 	    verificaPermissao(){
-		if (!Notification){
-		    alert('Não é possivel utilizar notificações no seu navegador. Tente Google Chrome.');
-		    return false;
-		}
+	        if (!Notification){
+	            alert('Não é possivel utilizar notificações no seu navegador. Tente Google Chrome.');
+	            return false;
+	        }
 
-		if (Notification.permission !== "granted"){
-		    Notification.requestPermission();
-		    return false;
-		}else{
-		    return true;
-		}
+	        if (Notification.permission !== "granted"){
+	            Notification.requestPermission();
+	            return false;
+	        }else{
+	            return true;
+	        }
 	    }
 
 	    callAction(notification){
-		if (this.settings.action){
-		    notification.onclick = function () {
-			window.open(this.settings.action);
-		    }
-		}
+	        if (this.settings.action){
+	            notification.onclick = function () {
+		        window.open(this.settings.action);
+	            }
+	        }
 	    }
 
 	    notificar(body=null, status=0){
-		if (this.verificaPermissao()) {
-		    if (status) definirStatus(status);		    
+	        if (this.verificaPermissao()) {
+	            if (status) definirStatus(status);
 		        let notification = new Notification(this.settings.titulo, {
-			    icon: this.settings.icon,
-			    body: if body ? body : this.settings.body,
+		            icon: this.settings.icon,
+		            body: if body ? body : this.settings.body,
 		        });
 
 		        this.callAction(notification);
-		    }else{
+	            }else{
 		        console.log('Permissões não foram ativadas')
-		    }
-	    }
+	            }
+	        }
 	}
 
 ## Utilização / Usage
