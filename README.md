@@ -90,17 +90,18 @@ Pure Javascript ES6 for Browser Notification
 	}
 
 ## Utilização / Usage
-var notificacao = new Notificacao({titulo:'App Name', 
+	var notificacao = new Notificacao({titulo:'App Name', 
 								   body:'Mensagem Default', 
 								   icon:'path_do_icone', 
 								   status:1,
 								   action:'url_redirecionamento_ao_clicar'});
-notificacao.notificar();
+	notificacao.notificar();
 
 // ou
-var notificacao = new Notificacao();
-notificacao.notificar('Nova mensagem')
-notificacao.notificar('Nova mensagem', status=-1) // *A implementar essa mensagem
+
+	var notificacao = new Notificacao();
+	notificacao.notificar('Nova mensagem')
+	notificacao.notificar('Nova mensagem', status=-1) // *A implementar essa mensagem
 
 ## Observação / Obs
 ### Parametros / Parameters: 
