@@ -14,7 +14,7 @@ Pure Javascript ES6 for Browser Notification
 	        let defaults = {
 	            titulo:     "Titulo Padrão",
 	            body:       "Mensagem Padrão",
-	            icon:       "/static/admin/plugins/notificacao/images/ICON_CHECK.png",
+	            icon:       "https://pbs.twimg.com/profile_images/686359431664238592/VEc23RGt.png",
 	            status:     1,
 	            action:     ""
 	        }
