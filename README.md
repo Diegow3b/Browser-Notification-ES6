@@ -75,19 +75,18 @@ Pure Javascript ES6 for Browser Notification
 	        }
 	    }
 
-	    notificar(body=null, status=0){
-	        if (this.verificaPermissao()) {
-	            if (status) definirStatus(status);
-		        let notification = new Notification(this.settings.titulo, {
-		            icon: this.settings.icon,
-		            body: (body ? body : this.settings.body),
-		        });
+	    notificar(body="", icon=""){
+		if (this.verificaPermissao()) {            
+		    let notification = new Notification(this.settings.titulo, {
+			icon: (icon ? icon : this.settings.icon),
+			body: (body ? body : this.settings.body),
+		    });
 
-		        this.callAction(notification);
-	            }else{
-		        console.log('Permissões não foram ativadas')
-	            }
-	        }
+		    this.callAction(notification);
+		}else{
+		    console.log('Permissões não foram ativadas')
+		}
+	    }
 	}
 ```
 ## Utilização / Usage
