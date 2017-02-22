@@ -76,13 +76,13 @@ Pure Javascript ES6 for Browser Notification
 	    }
 
 	    notificar(body="", icon=""){
-		if (this.verificaPermissao()) {            
+	        if (this.verificaPermissao()) {            
 	            let notification = new Notification(this.settings.titulo, {
 		        icon: (icon ? icon : this.settings.icon),
 		        body: (body ? body : this.settings.body),
 	            });
 
-	    this.callAction(notification);
+                    this.callAction(notification);
 	        }else{
 	            console.log('Permissões não foram ativadas')
 	        }
