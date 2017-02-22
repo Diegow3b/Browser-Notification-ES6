@@ -80,7 +80,7 @@ Pure Javascript ES6 for Browser Notification
 	            if (status) definirStatus(status);
 		        let notification = new Notification(this.settings.titulo, {
 		            icon: this.settings.icon,
-		            body: if body ? body : this.settings.body,
+		            body: (body ? body : this.settings.body),
 		        });
 
 		        this.callAction(notification);
